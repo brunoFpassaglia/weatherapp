@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/weather/presentation/bloc/weather_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,14 +9,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late 
+  late WeatherBloc _bloc;
 
   @override
-  void initState() { 
+  void initState() {
     super.initState();
-
-    
-    
+    _bloc = WeatherBloc();
   }
 
   @override
@@ -30,7 +29,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: ListView(
-          children: [],
+          children: [
+            Text('data'),
+          ],
         ),
       ),
       backgroundColor: Theme.of(context).primaryColor,
