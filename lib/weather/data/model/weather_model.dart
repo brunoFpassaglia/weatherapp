@@ -221,7 +221,7 @@ base class CloudsModel extends Clouds {
 
   factory CloudsModel.fromMap(Map<String, dynamic> map) {
     return CloudsModel(
-      all: map['all'] != null ? map['all'] as int : null,
+      all: map['all'] != null ? map['all'] as num : null,
     );
   }
 

@@ -3,15 +3,15 @@ abstract base class WeatherResponse {
   final List<Weather>? weather;
   final String? base;
   final Main? main;
-  final int? visibility;
+  final num? visibility;
   final Wind? wind;
   final Clouds? clouds;
-  final int? dt;
+  final num? dt;
   final Sys? sys;
-  final int? timezone;
-  final int? id;
+  final num? timezone;
+  final num? id;
   final String? name;
-  final int? cod;
+  final num? cod;
 
   WeatherResponse({
     this.coord,
@@ -31,8 +31,8 @@ abstract base class WeatherResponse {
 }
 
 abstract base class Coord {
-  final double? lon;
-  final double? lat;
+  final num? lon;
+  final num? lat;
   Coord({
     this.lon,
     this.lat,
@@ -40,7 +40,7 @@ abstract base class Coord {
 }
 
 abstract base class Weather {
-  final int? id;
+  final num? id;
   final String? main;
   final String? description;
   final String? icon;
@@ -53,14 +53,14 @@ abstract base class Weather {
 }
 
 abstract base class Main {
-  final double? temp;
-  final double? feels_like;
-  final double? temp_min;
-  final double? temp_max;
-  final int? pressure;
-  final int? humidity;
-  final int? sea_level;
-  final int? grnd_level;
+  final num? temp;
+  final num? feels_like;
+  final num? temp_min;
+  final num? temp_max;
+  final num? pressure;
+  final num? humidity;
+  final num? sea_level;
+  final num? grnd_level;
   Main({
     required this.temp,
     required this.feels_like,
@@ -74,9 +74,9 @@ abstract base class Main {
 }
 
 abstract base class Wind {
-  final double? speed;
-  final int? deg;
-  final double? gust;
+  final num? speed;
+  final num? deg;
+  final num? gust;
   Wind({
     required this.speed,
     required this.deg,
@@ -85,7 +85,7 @@ abstract base class Wind {
 }
 
 abstract base class Clouds {
-  final int? all;
+  final num? all;
   Clouds({
     required this.all,
   });
@@ -93,8 +93,8 @@ abstract base class Clouds {
 
 abstract base class Sys {
   final String? country;
-  final int? sunrise;
-  final int? sunset;
+  final num? sunrise;
+  final num? sunset;
 
   Sys({
     required this.country,

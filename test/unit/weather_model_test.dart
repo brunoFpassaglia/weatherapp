@@ -36,4 +36,13 @@ void main() {
     expect(weather, isA<WeatherResponse>());
     expect(weather, isA<WeatherResponseModel>());
   });
+
+  test('test if can create a response model (int data)', () {
+    var jsonInput =
+        '{ "coord": { "lon": -51, "lat": -25 }, "weather": [ { "id": 804, "main": "Clouds", "description": "overcast clouds", "icon": "04n" } ], "base": "stations", "main": { "temp": 292, "feels_like": 292.95, "temp_min": 292.41, "temp_max": 292.41, "pressure": 1014, "humidity": 98, "sea_level": 1014, "grnd_level": 892 }, "visibility": 10000, "wind": { "speed": 0.64, "deg": 32, "gust": 0.9 }, "clouds": { }, "dt": 1705448536, "sys": { "country": "BR", "sunrise": 1705394950, "sunset": 1705443675 }, "timezone": -10800, "id": 3461879, "name": "Guarapuava", "cod": 200 }';
+
+    WeatherResponse weather = WeatherResponseModel.fromJson(jsonInput);
+    expect(weather, isA<WeatherResponse>());
+    expect(weather, isA<WeatherResponseModel>());
+  });
 }
