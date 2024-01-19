@@ -13,10 +13,10 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       GetLocalWeatherEvent event, Emitter<WeatherState> emit) async {
     emit(LoadingWeatherState());
     try {
-      var weather = await _weatherUseCase(0, 0);
+      var weather = await _weatherUseCase(-25.3959, -51.4626);
       emit(SuccessWeatherState(weather));
     } catch (e) {
-      emit(ErrorWeatherState());
+      emit(ErrorWeatherState(e.toString()));
     }
   }
 

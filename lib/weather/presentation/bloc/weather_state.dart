@@ -12,4 +12,8 @@ class SuccessWeatherState extends WeatherState {
   SuccessWeatherState(this.weather);
 }
 
-class ErrorWeatherState extends WeatherState {}
+class ErrorWeatherState extends WeatherState {
+  final String error;
+
+  ErrorWeatherState(this.error);
+}

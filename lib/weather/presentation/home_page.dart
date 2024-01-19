@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/weather/presentation/bloc/weather_bloc.dart';
+import 'package:weather_app/weather/presentation/bloc/weather_event.dart';
+import 'package:weather_app/weather/presentation/bloc/weather_state.dart';
+import 'package:weather_app/weather/presentation/widget/weather_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,32 +13,50 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late WeatherBloc _bloc;
+  late WeatherBloc _weatherBloc;
 
   @override
   void initState() {
     super.initState();
-    _bloc = WeatherBloc();
+    _weatherBloc = WeatherBloc()..add(GetLocalWeatherEvent());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [Text('Weather App')],
         ),
       ),
       body: Center(
-        child: ListView(
-          children: [
-            Text('data'),
-          ],
+        child: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
+          child: BlocBuilder<WeatherBloc, WeatherState>(
+            bloc: _weatherBloc,
+            builder: ((context, state) {
+              return switch (state) {
+                (InitialWeatherState _) => const Column(children: [
+                    CircularProgressIndicator(),
+                  ]),
+                (LoadingWeatherState _) =>
+                  Center(child: const CircularProgressIndicator()),
+                (SuccessWeatherState state) =>
+                  WeatherWidget(weather: state.weather),
+                (ErrorWeatherState state) => Column(
+                    children: [Text(state.error)],
+                  ),
+              };
+            }),
+          ),
         ),
       ),
-      backgroundColor: Theme.of(context).primaryColor,
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.refresh),
+          onPressed: () => _weatherBloc.add(GetLocalWeatherEvent())),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     );
   }
 }

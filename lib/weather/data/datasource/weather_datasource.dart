@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:http/http.dart';
 
 abstract interface class WeatherDatasource {
@@ -17,6 +19,7 @@ class WeatherDatasourceImpl implements WeatherDatasource {
       'appid': 'fcc7658a4dfb9229ef701d7ad9e52c34'
     });
     var response = await httpClient.get(uri);
+    log(response.body);
 
     if (response.statusCode == 200) {
       return response.body;
