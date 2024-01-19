@@ -8,7 +8,10 @@ class MainWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Weather App',
-      theme: ThemeData(primarySwatch: Colors.lightGreen),
+      theme: ThemeData(
+        primarySwatch: Colors.lightGreen,
+        useMaterial3: true,
+      ),
       routerConfig: Modular.routerConfig,
     );
   }

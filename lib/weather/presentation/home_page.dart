@@ -8,18 +8,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late 
+
+  @override
+  void initState() { 
+    super.initState();
+
+    
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-        ],
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Text('Weather App')],
+        ),
       ),
+      body: Center(
+        child: ListView(
+          children: [],
+        ),
+      ),
+      backgroundColor: Theme.of(context).primaryColor,
     );
   }
 }
