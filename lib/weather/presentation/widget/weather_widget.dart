@@ -4,7 +4,12 @@ import 'package:weather_app/weather/domain/entity/weather.dart';
 
 class WeatherWidget extends StatelessWidget {
   final WeatherResponse weather;
-  const WeatherWidget({super.key, required this.weather});
+  final String animation;
+  const WeatherWidget({
+    super.key,
+    required this.weather,
+    required this.animation,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +17,24 @@ class WeatherWidget extends StatelessWidget {
       //mobile
       if (constraints.maxWidth < 600) {
         return Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Lottie.asset('assets/sunny.json'),
-            Text(weather.main?.temp.toString() ?? ""),
-            Text(weather.name ?? 'Who knows?'),
+            Lottie.asset(animation),
+            Text(
+              "${weather.main?.temp.toString() ?? ""}°K",
+              style: Theme.of(context).textTheme.displayLarge,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.place),
+                Text(
+                  weather.name ?? 'Who knows?',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
+            ),
           ],
         );
       } else {

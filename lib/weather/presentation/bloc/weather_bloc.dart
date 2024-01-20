@@ -14,7 +14,13 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     emit(LoadingWeatherState());
     try {
       var weather = await _weatherUseCase(-25.3959, -51.4626);
-      emit(SuccessWeatherState(weather));
+      var animation = switch (weather.weather?.first.main) {
+        "Clouds" => "assets/cloud.json",
+        "Rain" => "assets/rain.json",
+        "Clear" => "assets/sunny.json",
+        _ => "assets/sunny.json"
+      };
+      emit(SuccessWeatherState(weather, animation));
     } catch (e) {
       emit(ErrorWeatherState(e.toString()));
     }

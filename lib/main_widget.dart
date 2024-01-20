@@ -10,15 +10,20 @@ class MainWidget extends StatelessWidget {
     return MaterialApp.router(
       title: 'Weather App',
       theme: ThemeData(
+        fontFamily: 'Poppins',
+        iconTheme: IconThemeData(
+          color: Colors.deepPurple[800],
+        ),
         primarySwatch: Colors.deepPurple,
-        scaffoldBackgroundColor: Colors.deepPurple[50],
+        scaffoldBackgroundColor: Colors.deepPurple[100],
         appBarTheme: AppBarTheme(
             backgroundColor: Colors.deepPurple,
             foregroundColor: Colors.deepPurple[50]),
         useMaterial3: true,
         textTheme: TextTheme(
-          displayLarge: const TextStyle(
+          displayLarge: TextStyle(
             fontSize: 60,
+            color: Colors.deepPurple[800],
             fontWeight: FontWeight.bold,
           ),
           titleLarge: GoogleFonts.poppins(
@@ -26,6 +31,7 @@ class MainWidget extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
           bodyMedium: GoogleFonts.poppins(
+            color: Colors.deepPurple[800],
             fontSize: 18,
           ),
           displaySmall: GoogleFonts.poppins(

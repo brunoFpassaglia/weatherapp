@@ -36,7 +36,8 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
+          padding:
+              EdgeInsets.only(top: MediaQuery.of(context).size.height / 10),
           child: BlocBuilder<WeatherBloc, WeatherState>(
             bloc: _weatherBloc,
             builder: ((context, state) {
@@ -46,8 +47,10 @@ class _HomePageState extends State<HomePage> {
                   ]),
                 (LoadingWeatherState _) =>
                   Center(child: const CircularProgressIndicator()),
-                (SuccessWeatherState state) =>
-                  WeatherWidget(weather: state.weather),
+                (SuccessWeatherState state) => WeatherWidget(
+                    weather: state.weather,
+                    animation: state.animation,
+                  ),
                 (ErrorWeatherState state) => Column(
                     children: [Text(state.error)],
                   ),

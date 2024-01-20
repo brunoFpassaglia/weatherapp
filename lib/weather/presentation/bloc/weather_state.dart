@@ -8,8 +8,9 @@ class LoadingWeatherState extends WeatherState {}
 
 class SuccessWeatherState extends WeatherState {
   final WeatherResponse weather;
+  final String animation;
 
-  SuccessWeatherState(this.weather);
+  SuccessWeatherState(this.weather, this.animation);
 }
 
 class ErrorWeatherState extends WeatherState {
