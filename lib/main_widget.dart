@@ -15,7 +15,6 @@ class MainWidget extends StatelessWidget {
           color: Colors.deepPurple[800],
         ),
         primarySwatch: Colors.deepPurple,
-        scaffoldBackgroundColor: Colors.deepPurple[100],
         appBarTheme: AppBarTheme(
             backgroundColor: Colors.deepPurple,
             foregroundColor: Colors.deepPurple[50]),

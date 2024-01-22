@@ -22,6 +22,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    _weatherBloc.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -42,17 +49,17 @@ class _HomePageState extends State<HomePage> {
             bloc: _weatherBloc,
             builder: ((context, state) {
               return switch (state) {
-                (InitialWeatherState _) => const Column(children: [
-                    CircularProgressIndicator(),
-                  ]),
+                (InitialWeatherState _) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
                 (LoadingWeatherState _) =>
                   Center(child: const CircularProgressIndicator()),
                 (SuccessWeatherState state) => WeatherWidget(
                     weather: state.weather,
                     animation: state.animation,
                   ),
-                (ErrorWeatherState state) => Column(
-                    children: [Text(state.error)],
+                (ErrorWeatherState state) => Center(
+                    child: Text(state.error, textAlign: TextAlign.center),
                   ),
               };
             }),

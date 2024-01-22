@@ -38,13 +38,29 @@ class WeatherWidget extends StatelessWidget {
           ],
         );
       } else {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        return Column(
           children: [
-            Text(weather.name ?? 'Who knows?'),
-            Lottie.asset('assets/sunny.json'),
-            Text(weather.main?.temp.toString() ?? "")
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Lottie.asset(animation),
+                Text(
+                  "${weather.main?.temp.toString() ?? ""}°K",
+                  style: Theme.of(context).textTheme.displayLarge,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.place),
+                Text(
+                  weather.name ?? 'Who knows?',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
+            )
           ],
         );
       }
