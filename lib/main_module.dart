@@ -2,8 +2,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:http/http.dart';
 import 'package:weather_app/weather/data/datasource/weather_datasource.dart';
 import 'package:weather_app/weather/data/repository/weather_repository.dart';
+import 'package:weather_app/weather/data/service/geolocation_service.dart';
 import 'package:weather_app/weather/domain/repository/weather_repository.dart';
+import 'package:weather_app/weather/domain/service/geolocation_service.dart';
 import 'package:weather_app/weather/domain/usecase/get_weather_usecase.dart';
+import 'package:weather_app/weather/presentation/bloc/weather_bloc.dart';
 import 'package:weather_app/weather/presentation/home_page.dart';
 
 class MainModule extends Module {
@@ -13,6 +16,8 @@ class MainModule extends Module {
     i.add<WeatherDatasource>(WeatherDatasourceImpl.new);
     i.add<WeatherRepository>(WeatherRepositoryImpl.new);
     i.add<GetWeatherUseCase>(GetWeatherUseCaseImp.new);
+    i.add<GeolocationService>(GeolocationServiceImpl.new);
+    i.addLazySingleton<WeatherBloc>(WeatherBloc.new);
   }
 
   @override

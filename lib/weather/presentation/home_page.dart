@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:weather_app/weather/presentation/bloc/weather_bloc.dart';
 import 'package:weather_app/weather/presentation/bloc/weather_event.dart';
 import 'package:weather_app/weather/presentation/bloc/weather_state.dart';
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _weatherBloc = WeatherBloc()..add(GetLocalWeatherEvent());
+    _weatherBloc = Modular.get<WeatherBloc>()..add(GetLocalWeatherEvent());
   }
 
   @override
