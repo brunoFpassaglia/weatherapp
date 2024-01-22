@@ -9,6 +9,5 @@ void main() {
     var datasource = WeatherDatasourceImpl(httpClient: client);
     var response = await datasource.getWeather(-25.3959, -51.4626);
     expect(response, isA<String>());
-    print(response);
   });
 }
