@@ -8,24 +8,40 @@
             "name": "Flutter",
             "type": "dart",
             "request": "launch",
-            "program": "lib/main.dart"
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define-from-file",
+                "api-keys.json"
+            ]
         },
         {
             "name": "weather_app",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": [
+                "--dart-define-from-file",
+                "api-keys.json"
+            ]
         },
         {
             "name": "weather_app (profile mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "args": [
+                "--dart-define-from-file",
+                "api-keys.json"
+            ]
         },
         {
             "name": "weather_app (release mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "args": [
+                "--dart-define-from-file",
+                "api-keys.json"
+            ]
         }
     ]
 }

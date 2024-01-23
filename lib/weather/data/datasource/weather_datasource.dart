@@ -16,7 +16,7 @@ class WeatherDatasourceImpl implements WeatherDatasource {
     var uri = Uri.https('api.openweathermap.org', 'data/2.5/weather', {
       'lat': lat.toString(),
       'lon': long.toString(),
-      'appid': 'fcc7658a4dfb9229ef701d7ad9e52c34'
+      'appid': const String.fromEnvironment("WEATHER_API_KEY")
     });
     var response = await httpClient.get(uri);
     log(response.body);
