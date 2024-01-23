@@ -9,11 +9,14 @@ class MainWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Weather App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Poppins',
         iconTheme: IconThemeData(
           color: Colors.deepPurple[800],
         ),
+        drawerTheme:
+            DrawerThemeData(backgroundColor: Colors.deepPurple, width: 200),
         inputDecorationTheme: InputDecorationTheme(
           labelStyle: TextStyle(
             fontSize: 12,

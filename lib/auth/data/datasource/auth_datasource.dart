@@ -6,7 +6,7 @@ abstract interface class AuthDataSource {
 class AuthDataSourceImpl implements AuthDataSource {
   @override
   Future<String> login(Map<String, dynamic> body) async {
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 1500));
     return '{"access_token":"2|pretendThisIsAToken","token_type":"Bearer","user":"John Doe"}';
   }
 

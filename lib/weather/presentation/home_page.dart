@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:weather_app/auth/presentation/bloc/auth_bloc.dart';
+import 'package:weather_app/auth/presentation/bloc/auth_event.dart';
 import 'package:weather_app/weather/presentation/bloc/weather_bloc.dart';
 import 'package:weather_app/weather/presentation/bloc/weather_event.dart';
 import 'package:weather_app/weather/presentation/bloc/weather_state.dart';
@@ -15,25 +17,28 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late WeatherBloc _weatherBloc;
+  late AuthBloc _authBloc;
 
   @override
   void initState() {
     super.initState();
     _weatherBloc = Modular.get<WeatherBloc>()..add(GetLocalWeatherEvent());
+    _authBloc = Modular.get<AuthBloc>();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Weather App',
-            )
-          ],
+        centerTitle: true,
+        title: const Text(
+          'Weather App',
         ),
+        actions: [
+          IconButton(
+              onPressed: () => _authBloc.add(LogOut()),
+              icon: Icon(Icons.logout))
+        ],
       ),
       body: Center(
         child: Padding(

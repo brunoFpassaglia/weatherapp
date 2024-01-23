@@ -39,8 +39,7 @@ class MainModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child('/home',
-        child: (context) => const HomePage(), guards: [AuthGuard()]);
+    r.child('/', child: (context) => const HomePage(), guards: [AuthGuard()]);
     r.child('/login', child: (context) => const LoginPage());
   }
 }

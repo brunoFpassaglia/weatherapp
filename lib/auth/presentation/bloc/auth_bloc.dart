@@ -9,42 +9,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({
     required this.usecase,
   }) : super(AuthUninitialized()) {
-    on<AppStarted>(_onAppStarted);
     on<AttemptLogin>(_onAttemptLogin);
     on<LogOut>(_onLogOut);
   }
 
-  void _onAppStarted(AppStarted event, Emitter<AuthState> emit) async {
-    emit(AuthLoading());
-    try {
-      // await usecase.checkValidToken();
-      emit(AuthAuthenticated('mock token'));
-      _navigateToHome();
-    } catch (e) {
-      emit(AuthUnauthenticated());
-      _navigateToLogin();
-    }
-  }
-
   void _onAttemptLogin(AttemptLogin event, Emitter<AuthState> emit) async {
+    emit(AuthLoading());
     var jwtToken = await usecase.login(event.email, event.password);
     emit(AuthAuthenticated(jwtToken));
     _navigateToHome();
   }
 
   void _onLogOut(LogOut event, Emitter<AuthState> emit) async {
-    emit(AuthLoading());
-    // todo: execute logout use case
-    try {
-      emit(AuthUnauthenticated());
-      _navigateToLogin();
-    } catch (e) {
-      // TODO
-    }
+    emit(AuthUnauthenticated());
+    _navigateToLogin();
   }
 
   void _navigateToHome() {
-    Modular.to.navigate('/home');
+    Modular.to.navigate('/');
   }
 
   void _navigateToLogin() {
