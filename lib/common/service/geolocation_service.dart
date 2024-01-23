@@ -1,5 +1,8 @@
 import 'package:geolocator/geolocator.dart';
-import 'package:weather_app/weather/domain/service/geolocation_service.dart';
+
+abstract interface class GeolocationService {
+  Future<(double, double)> getDeviceLocation();
+}
 
 class GeolocationServiceImpl implements GeolocationService {
   @override

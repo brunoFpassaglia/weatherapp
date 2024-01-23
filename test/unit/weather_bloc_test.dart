@@ -1,8 +1,8 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:weather_app/common/service/geolocation_service.dart';
 import 'package:weather_app/weather/data/model/weather_model.dart';
-import 'package:weather_app/weather/domain/service/geolocation_service.dart';
 import 'package:weather_app/weather/domain/usecase/get_weather_usecase.dart';
 import 'package:weather_app/weather/presentation/bloc/weather_bloc.dart';
 import 'package:weather_app/weather/presentation/bloc/weather_event.dart';
@@ -19,7 +19,7 @@ void main() {
     mockusecase = MockGetWeatherUseCase();
     mockservice = MockGeolocationService();
   });
-  blocTest<WeatherBloc, WeatherState>('test bloc success state',
+  blocTest<WeatherBloc, WeatherState>('test weather bloc success state',
       build: () {
         when(() => mockusecase.call(any(), any()))
             .thenAnswer((_) async => WeatherResponseModel());
@@ -35,7 +35,7 @@ void main() {
           ]);
 
   blocTest<WeatherBloc, WeatherState>(
-      'test bloc error state on location exception',
+      'test weather bloc error state on location exception',
       build: () {
         when(() => mockusecase.call(any(), any()))
             .thenAnswer((_) async => WeatherResponseModel());
@@ -51,7 +51,7 @@ void main() {
           ]);
 
   blocTest<WeatherBloc, WeatherState>(
-      'test bloc error state on usecase exception',
+      'test weather bloc error state on usecase exception',
       build: () {
         when(() => mockusecase.call(any(), any()))
             .thenThrow(Exception('some excemption'));

@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/weather/domain/service/geolocation_service.dart';
+import 'package:weather_app/common/service/geolocation_service.dart';
 import 'package:weather_app/weather/domain/usecase/get_weather_usecase.dart';
 import 'package:weather_app/weather/presentation/bloc/weather_event.dart';
 import 'package:weather_app/weather/presentation/bloc/weather_state.dart';
