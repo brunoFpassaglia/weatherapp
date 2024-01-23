@@ -23,13 +23,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-  void dispose() {
-    // TODO: implement dispose
-    _weatherBloc.close();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -44,8 +37,11 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Padding(
-          padding:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height / 10),
+          padding: EdgeInsets.only(
+            top: MediaQuery.of(context).size.height / 10,
+            left: MediaQuery.of(context).size.width / 10,
+            right: MediaQuery.of(context).size.width / 10,
+          ),
           child: BlocBuilder<WeatherBloc, WeatherState>(
             bloc: _weatherBloc,
             builder: ((context, state) {

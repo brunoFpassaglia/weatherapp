@@ -14,10 +14,20 @@ class MainWidget extends StatelessWidget {
         iconTheme: IconThemeData(
           color: Colors.deepPurple[800],
         ),
+        inputDecorationTheme: InputDecorationTheme(
+          labelStyle: TextStyle(
+            fontSize: 12,
+            color: Colors.deepPurple[200],
+            fontStyle: FontStyle.italic,
+          ),
+          prefixIconColor: Colors.deepPurple[800],
+          iconColor: Colors.deepPurple[200],
+        ),
         primarySwatch: Colors.deepPurple,
         appBarTheme: AppBarTheme(
-            backgroundColor: Colors.deepPurple,
-            foregroundColor: Colors.deepPurple[50]),
+          backgroundColor: Colors.deepPurple,
+          foregroundColor: Colors.deepPurple[50],
+        ),
         useMaterial3: true,
         textTheme: TextTheme(
           displayLarge: TextStyle(
